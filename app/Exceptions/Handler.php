@@ -52,6 +52,9 @@ class Handler extends ExceptionHandler
                 "code" => 10
             ],404);
         }
+        if ($exception instanceof IncorrectModelException) {
+//            return Response::json([
+        }
         return parent::render($request, $exception);
     }
 

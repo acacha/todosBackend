@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Transformers\Contracts\Transformer;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -12,23 +13,25 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    protected $transformer;
+
+    /**
+     * Controller constructor.
+     * @param $transformer
+     */
+    public function __construct(Transformer $transformer)
+    {
+        $this->transformer = $transformer;
+    }
+
+
     protected function transformCollection($resources) {
         //Collections: Laravel collections
         return array_map(function($resource) {
-            return $this->transform($resource);
+            return $this->transformer->transform($resource);
         }, $resources);
-
     }
 
-    protected function transform($resource)
-    {
-//        dd($resource);
-        return [
-            'name'     => $resource['name'],
-            'done'     => (boolean) $resource['done'],
-            'priority' => (integer) $resource['priority'],
-        ];
-    }
 
     /**
      * @param $resource
