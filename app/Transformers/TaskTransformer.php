@@ -9,14 +9,14 @@ class TaskTransformer implements Transformer
 {
     public function transform($resource)
     {
-        if (! $resource instanceof \App\Task) {
+        if (!$resource instanceof \App\Task) {
             throw new IncorrectModelException();
         }
+
         return [
             'name'     => $resource['name'],
-            'done'     => (boolean) $resource['done'],
-            'priority' => (integer) $resource['priority'],
+            'done'     => (bool) $resource['done'],
+            'priority' => (int) $resource['priority'],
         ];
     }
-
 }
