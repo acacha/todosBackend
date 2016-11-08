@@ -29,7 +29,8 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $exception
+     * @param \Exception $exception
+     *
      * @return void
      */
     public function report(Exception $exception)
@@ -40,29 +41,32 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param \Illuminate\Http\Request $request
+     * @param \Exception               $exception
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function render($request, Exception $exception)
     {
         if ($exception instanceof ModelNotFoundException) {
             return Response::json([
-                "error" => "Hi ha hagut una excepció " . $exception->getMessage(),
-                "code" => 10
-            ],404);
+                'error' => 'Hi ha hagut una excepció '.$exception->getMessage(),
+                'code'  => 10,
+            ], 404);
         }
         if ($exception instanceof IncorrectModelException) {
-//            return Response::json([
+            //            return Response::json([
         }
+
         return parent::render($request, $exception);
     }
 
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @param \Illuminate\Http\Request                 $request
+     * @param \Illuminate\Auth\AuthenticationException $exception
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     protected function unauthenticated($request, AuthenticationException $exception)
