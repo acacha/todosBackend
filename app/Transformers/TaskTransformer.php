@@ -8,13 +8,18 @@ class TaskTransformer extends Transformer
 {
     public function transform($resource)
     {
-        if (! $resource instanceof \App\Task) {
+        if (!$resource instanceof \App\Task) {
             throw new IncorrectModelException();
         }
+
         return [
             'name'     => $resource['name'],
-            'done'     => (boolean) $resource['done'],
-            'priority' => (integer) $resource['priority'],
+            'done'     => (bool) $resource['done'],
+            'priority' => (int) $resource['priority'],
         ];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 77e35ab6dc972761f25ec180c66aba89ba0b8c2c
