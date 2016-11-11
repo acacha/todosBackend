@@ -3,9 +3,8 @@
 namespace App\Transformers;
 
 use App\Exceptions\IncorrectModelException;
-use App\Transformers\Contracts\Transformer;
 
-class TaskTransformer implements Transformer
+class TaskTransformer extends Transformer
 {
     public function transform($resource)
     {
@@ -18,5 +17,4 @@ class TaskTransformer implements Transformer
             'priority' => (integer) $resource['priority'],
         ];
     }
-
 }
