@@ -17,8 +17,4 @@ class UserTransformer extends Transformer
             'email'     => $resource['email'],
         ];
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 77e35ab6dc972761f25ec180c66aba89ba0b8c2c
