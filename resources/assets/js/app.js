@@ -15,6 +15,44 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 
+//Vm: view model
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        message: 'Hello Vue que tal!',
+        seen: false,
+        todos: [
+            {
+                name: 'Learn Javascript',
+                done: true,
+                priority: 4
+            },
+            {
+                name: 'Learn PHP',
+                done: false,
+                priority: 5
+            },
+            {
+                name: 'Comprar pa',
+                done: false,
+                priority: 1
+            }
+        ]
+    },
+    methods: {
+        reverseMessage: function() {
+            this.message = this.message.split('').reverse().join('');
+        },
+        fetchData: function() {
+            var req = new XMLHttpRequest();
+            req.open('GET', 'http://localhost:8081/api/v1/task', false);
+            req.send(null);
+            if (req.status == 200)
+                console.log(req.responseText);
+        }
+    },
+    created: function() {
+        console.log('App created!');
+        this.fetchData()
+    }
 });

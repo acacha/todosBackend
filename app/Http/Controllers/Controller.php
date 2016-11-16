@@ -25,8 +25,7 @@ class Controller extends BaseController
         $this->transformer = $transformer;
     }
 
-<<<<<<< HEAD
-=======
+
     protected function transformCollection($resources)
     {
         //Collections: Laravel collections
@@ -34,7 +33,6 @@ class Controller extends BaseController
             return $this->transformer->transform($resource);
         }, $resources);
     }
->>>>>>> 77e35ab6dc972761f25ec180c66aba89ba0b8c2c
 
     /**
      * @param $resource
@@ -45,11 +43,7 @@ class Controller extends BaseController
     {
         $paginationData = $this->generatePaginationData($resources);
         $data = [
-<<<<<<< HEAD
             'data' => $this->transformer->transformCollection($resources->items())
-=======
-            'data' => $this->transformCollection($resources->items()),
->>>>>>> 77e35ab6dc972761f25ec180c66aba89ba0b8c2c
         ];
 
         return Response::json(array_merge($metadata, $paginationData, $data), 200);

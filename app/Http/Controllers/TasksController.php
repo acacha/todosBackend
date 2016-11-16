@@ -6,14 +6,26 @@ use App\Repositories\TaskRepository;
 use App\Task;
 use App\Transformers\TaskTransformer;
 use Illuminate\Http\Request;
-use Response;
 
+/**
+ * Class TasksController
+ *
+ * @package App\Http\Controllers
+ */
 class TasksController extends Controller
 {
+    /**
+     * Repository object
+     *
+     * @var TaskRepository
+     */
     protected $repository;
 
     /**
      * TasksController constructor.
+     *
+     * @param TaskTransformer $transformer
+     * @param TaskRepository $repository
      */
     public function __construct(TaskTransformer $transformer, TaskRepository $repository)
     {
