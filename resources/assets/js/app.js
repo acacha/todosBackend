@@ -44,11 +44,14 @@ const app = new Vue({
             this.message = this.message.split('').reverse().join('');
         },
         fetchData: function() {
-            var req = new XMLHttpRequest();
-            req.open('GET', 'http://localhost:8081/api/v1/task', false);
-            req.send(null);
-            if (req.status == 200)
-                console.log(req.responseText);
+            // GET /someUrl
+            this.$http.get('/api/v1/task').then((response) => {
+                this.todos = response.data.data;
+            }, (response) => {
+                // error callback
+                sweetAlert("Oops...", "Something went wrong!", "error");
+                console.log(response);
+            });
         }
     },
     created: function() {
