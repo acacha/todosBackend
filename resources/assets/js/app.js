@@ -14,6 +14,7 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('todos', require('./components/Todos.vue'));
 
 //Vm: view model
 const app = new Vue({
@@ -21,23 +22,7 @@ const app = new Vue({
     data: {
         message: 'Hello Vue que tal!',
         seen: false,
-        todos: [
-            {
-                name: 'Learn Javascript',
-                done: true,
-                priority: 4
-            },
-            {
-                name: 'Learn PHP',
-                done: false,
-                priority: 5
-            },
-            {
-                name: 'Comprar pa',
-                done: false,
-                priority: 1
-            }
-        ]
+        todos: []
     },
     methods: {
         reverseMessage: function() {
@@ -46,12 +31,14 @@ const app = new Vue({
         fetchData: function() {
             // GET /someUrl
             this.$http.get('/api/v1/task').then((response) => {
+                console.log(response);
                 this.todos = response.data.data;
             }, (response) => {
                 // error callback
                 sweetAlert("Oops...", "Something went wrong!", "error");
                 console.log(response);
             });
+            //Promises
         }
     },
     created: function() {

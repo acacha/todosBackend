@@ -20,5 +20,9 @@
     "icheck": "^1.0.2",
     "ionicons": "^3.0.0",
     "toastr": "^2.1.2"
+  },
+  "dependencies": {
+    "axios": "^0.15.2",
+    "sweetalert": "^1.1.3"
   }
 }
