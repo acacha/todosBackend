@@ -10,6 +10,10 @@ window._ = require('lodash');
 window.$ = window.jQuery = require('jquery');
 require('bootstrap-sass');
 
+require('admin-lte');
+window.toastr = require('toastr');
+require('icheck');
+
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
  * using reactive data binding and reusable components. Vue's API is clean
@@ -17,12 +21,7 @@ require('bootstrap-sass');
  */
 
 window.Vue = require('vue');
-// require('vue-resource');
-
-window.axios = require('axios');
-Vue.prototype.$http = axios;
-
-require('sweetalert');
+require('vue-resource');
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
@@ -30,26 +29,11 @@ require('sweetalert');
  * included with Laravel will automatically verify the header's value.
  */
 
-// console.log(Vue.$http);
-//
-// Vue.http.interceptors.push((request, next) => {
-//     request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
-//
-//     next();
-// });
+Vue.http.interceptors.push((request, next) => {
+    request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
 
-axios.defaults.headers.common['X-CSRF-TOKEN'] = Laravel.csrfToken;
-
-// // Add a request interceptor
-// axios.interceptors.request.use(function (config) {
-//     // config = {
-//     //     headers: {'X-CSRF-TOKEN': 'TOKEN'}
-//     // };
-//     return config;
-// }, function (error) {
-//     // Do something with request error
-//     return Promise.reject(error);
-// });
+    next();
+});
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
