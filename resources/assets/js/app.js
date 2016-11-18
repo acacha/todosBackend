@@ -18,31 +18,5 @@ Vue.component('todos', require('./components/Todos.vue'));
 
 //Vm: view model
 const app = new Vue({
-    el: '#app',
-    data: {
-        message: 'Hello Vue que tal!',
-        seen: false,
-        todos: []
-    },
-    methods: {
-        reverseMessage: function() {
-            this.message = this.message.split('').reverse().join('');
-        },
-        fetchData: function() {
-            // GET /someUrl
-            this.$http.get('/api/v1/task').then((response) => {
-                console.log(response);
-                this.todos = response.data.data;
-            }, (response) => {
-                // error callback
-                sweetAlert("Oops...", "Something went wrong!", "error");
-                console.log(response);
-            });
-            //Promises
-        }
-    },
-    created: function() {
-        console.log('App created!');
-        this.fetchData()
-    }
+    el: '#app'
 });

@@ -41,7 +41,7 @@ class TasksController extends Controller
      */
     public function index(Request $request)
     {
-        abort(500);
+//        abort(500);
         // No metadata
         // Pagination
         // No error messages
