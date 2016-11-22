@@ -16,6 +16,21 @@ require('./bootstrap');
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('todos', require('./components/Todos.vue'));
 
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue')
+);
+
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue')
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue')
+);
+
 //Vm: view model
 const app = new Vue({
     el: '#app'
