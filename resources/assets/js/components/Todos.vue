@@ -22,7 +22,7 @@
                     </thead>
                     <tbody>
                     <tr v-for="(todo, index) in todos">
-                        <td>{{index}}</td>
+                        <td>{{index + 1}}</td>
                         <td>{{todo.name}}</td>
                         <td>{{todo.priority}}</td>
                         <td>{{todo.done}}</td>
@@ -38,6 +38,7 @@
                 </table>
             </div>
             <!-- /.box-body -->
+            <!--TODO http://www.pontikis.net/labs/bs_pagination/demo/-->
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
                     <li><a href="#">&laquo;</a></li>

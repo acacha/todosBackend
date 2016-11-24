@@ -8,6 +8,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile/tokens', function () {
         return view('tokens');
     });
+
+    Route::get('users', function () {
+        dd(App\User::paginate());
+    });
 });
 
 Route::get('/', function () {
