@@ -38,7 +38,12 @@
                 </table>
             </div>
             <!-- /.box-body -->
-            <!--TODO http://www.pontikis.net/labs/bs_pagination/demo/-->
+            <!--
+            TODO http://www.pontikis.net/labs/bs_pagination/demo/
+            http://fareez.info/blog/pagination-component-using-vuejs/
+            https://laravel.com/docs/5.3/pagination
+            https://laravel.com/api/5.1/Illuminate/Pagination/AbstractPaginator.html
+            -->
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
                     <li><a href="#">&laquo;</a></li>
