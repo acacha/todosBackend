@@ -5,9 +5,5 @@
 @endsection
 
 @section('main-content')
-    <div id="app">
-
         <todos></todos>
-
-    </div>
 @endsection
