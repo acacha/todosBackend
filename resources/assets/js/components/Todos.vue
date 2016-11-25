@@ -3,6 +3,23 @@
 </style>
 <template>
     <div>
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Add task</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" action="#">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="name" class="form-control" id="name" placeholder="Enter task name here"
+                               v-model="newTodo"
+                               @keyup.enter="addTodo">
+                    </div>
+                </div>
+            </form>
+        </div>
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Tasques</h3>
@@ -73,10 +90,9 @@
     export default {
         data() {
             return {
-                message: 'Hola que tal',
-                seen: false,
                 todos: [],
-                visibility: 'all' // 'active' 'completed'
+                visibility: 'all', // 'active' 'completed'
+                newTodo: ''
             }
         },
         computed: {
@@ -99,16 +115,6 @@
                 }
                 return filters[this.visibility](this.todos);
 
-                // Filters
-//                return this.todos;
-                // active
-//                return this.todos.filter(function(todo) {
-//                    return !todo.done;
-//                });
-                //done
-//                return this.todos.filter(function(todo) {
-//                    return todo.done;
-//                });
             }
         },
         created() {
@@ -116,8 +122,19 @@
             this.fetchData();
         },
         methods: {
+            addTodo: function() {
+                var value = this.newTodo && this.newTodo.trim();
+                if (!value) {
+                    return;
+                }
+                this.todos.push({
+                    name: value,
+                    priority: 1,
+                    done: false
+                });
+                this.newTodo = '';
+            },
             setVisibility: function(visibility) {
-                console.log('Han fet click');
                 this.visibility = visibility;
             },
             reverseMessage: function() {
