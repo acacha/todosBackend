@@ -6,6 +6,18 @@
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Tasques</h3>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">{{visibility}}</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#"  v-on:click="setVisibility('all')">All</a></li>
+                        <li><a href="#"  @click="setVisibility('active')">Active</a></li>
+                        <li><a href="#/" @click="setVisibility('completed')">Completed</a></li>
+                    </ul>
+                </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -21,7 +33,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(todo, index) in todos">
+                    <tr v-for="(todo, index) in filteredTodos">
                         <td>{{index + 1}}</td>
                         <td>{{todo.name}}</td>
                         <td>{{todo.priority}}</td>
@@ -45,6 +57,7 @@
             https://laravel.com/api/5.1/Illuminate/Pagination/AbstractPaginator.html
             -->
             <div class="box-footer clearfix">
+
                 <ul class="pagination pagination-sm no-margin pull-right">
                     <li><a href="#">&laquo;</a></li>
                     <li><a href="#">1</a></li>
@@ -63,6 +76,39 @@
                 message: 'Hola que tal',
                 seen: false,
                 todos: [],
+                visibility: 'all' // 'active' 'completed'
+            }
+        },
+        computed: {
+            filteredTodos: function() {
+
+                var filters = {
+                    all: function (todos) {
+                        return todos;
+                    },
+                    active: function (todos) {
+                        return todos.filter(function (todo) {
+                            return !todo.done;
+                        });
+                    },
+                    completed: function (todos) {
+                        return todos.filter(function (todo) {
+                            return todo.done;
+                        });
+                    }
+                }
+                return filters[this.visibility](this.todos);
+
+                // Filters
+//                return this.todos;
+                // active
+//                return this.todos.filter(function(todo) {
+//                    return !todo.done;
+//                });
+                //done
+//                return this.todos.filter(function(todo) {
+//                    return todo.done;
+//                });
             }
         },
         created() {
@@ -70,6 +116,10 @@
             this.fetchData();
         },
         methods: {
+            setVisibility: function(visibility) {
+                console.log('Han fet click');
+                this.visibility = visibility;
+            },
             reverseMessage: function() {
                 this.message = this.message.split('').reverse().join('');
             },
