@@ -69,13 +69,22 @@ class TasksApiTest extends TestCase
         return factory(App\Task::class)->create();
     }
 
-    //TODO ADD TEST FOR AUTHENTICATION AND REFACTOR EXISTING TESTS
-    //NOT AUTHORIZED: $this->assertEquals(301, $response->status());
+    public function userNotAuthenticated() {
+        $response = $this->json('GET', $this->uri)->getResult();
+        $this->assertEquals(401, $response->status());
+        //TODO: test message error
+    }
+    //NOT AUTHORIZED: $this->assertEquals(403, $response->status());
 
+    protected function login()
+    {
+        $user = factory(App\User::class)->create();
+        $this->actingAs($user,'api');
+    }
     /**
      * Test Retrieve all tasks.
      *
-     * @group failing
+     * @group pepe
      *
      * @return void
      */
@@ -83,7 +92,7 @@ class TasksApiTest extends TestCase
     {
         //Seed database
         $this->seedDatabaseWithTasks();
-
+        $this->login();
         $this->json('GET', $this->uri)
             ->seeJsonStructure([
                 '*' => [
