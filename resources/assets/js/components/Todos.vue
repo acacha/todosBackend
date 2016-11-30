@@ -51,7 +51,7 @@
                     </thead>
                     <tbody>
                     <tr v-for="(todo, index) in filteredTodos">
-                        <td>{{index + 1}}</td>
+                        <td>{{index + from }}</td>
                         <td>{{todo.name}}</td>
                         <td>{{todo.priority}}</td>
                         <td>{{todo.done}}</td>
@@ -74,6 +74,8 @@
             https://laravel.com/api/5.1/Illuminate/Pagination/AbstractPaginator.html
             -->
             <div class="box-footer clearfix">
+                <span class="pull-left">Showing {{ from }} to {{ to }} of {{ total }} entries</span>
+
 
                 <ul class="pagination pagination-sm no-margin pull-right">
                     <li><a href="#">&laquo;</a></li>
@@ -82,75 +84,93 @@
                     <li><a href="#">3</a></li>
                     <li><a href="#">&raquo;</a></li>
                 </ul>
+
+
+                <pagination></pagination>
             </div>
         </div>
     </div>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                todos: [],
-                visibility: 'all', // 'active' 'completed'
-                newTodo: ''
-            }
-        },
-        computed: {
-            filteredTodos: function() {
 
-                var filters = {
-                    all: function (todos) {
-                        return todos;
-                    },
-                    active: function (todos) {
-                        return todos.filter(function (todo) {
-                            return !todo.done;
-                        });
-                    },
-                    completed: function (todos) {
-                        return todos.filter(function (todo) {
-                            return todo.done;
-                        });
-                    }
-                }
-                return filters[this.visibility](this.todos);
+import Pagination from './Pagination.vue'
 
-            }
-        },
-        created() {
-            console.log('Component todolist created.');
-            this.fetchData();
-        },
-        methods: {
-            addTodo: function() {
-                var value = this.newTodo && this.newTodo.trim();
-                if (!value) {
-                    return;
+export default {
+    components : { Pagination },
+    data() {
+        return {
+            todos: [],
+            visibility: 'all', // 'active' 'completed'
+            newTodo: '',
+            perPage: 5,
+            from: 0,
+            to: 0,
+            total: 0
+        }
+    },
+    computed: {
+        filteredTodos: function() {
+
+            var filters = {
+                all: function (todos) {
+                    return todos;
+                },
+                active: function (todos) {
+                    return todos.filter(function (todo) {
+                        return !todo.done;
+                    });
+                },
+                completed: function (todos) {
+                    return todos.filter(function (todo) {
+                        return todo.done;
+                    });
                 }
-                this.todos.push({
-                    name: value,
-                    priority: 1,
-                    done: false
-                });
-                this.newTodo = '';
-            },
-            setVisibility: function(visibility) {
-                this.visibility = visibility;
-            },
-            reverseMessage: function() {
-                this.message = this.message.split('').reverse().join('');
-            },
-            fetchData: function() {
-                // GET /someUrl
-                this.$http.get('/api/v1/task').then((response) => {
-                    console.log(response);
-                    this.todos = response.data.data;
-                }, (response) => {
-                    // error callback
-                    sweetAlert("Oops...", "Something went wrong!", "error");
-                    console.log(response);
-                });
             }
+            return filters[this.visibility](this.todos);
+
+        }
+    },
+    created() {
+        console.log('Component todolist created.');
+        this.fetchData();
+    },
+    methods: {
+        pageChanged: function(pageNum) {
+
+        },
+        addTodo: function() {
+            var value = this.newTodo && this.newTodo.trim();
+            if (!value) {
+                return;
+            }
+            this.todos.push({
+                name: value,
+                priority: 1,
+                done: false
+            });
+            this.newTodo = '';
+        },
+        setVisibility: function(visibility) {
+            this.visibility = visibility;
+        },
+        fetchData: function() {
+            return this.fetchPage(1);
+        },
+        fetchPage: function(page) {
+            // GET /someUrl
+            this.$http.get('/api/v1/task?page=' + page).then((response) => {
+                console.log(response);
+                this.todos = response.data.data;
+                this.perPage = response.data.per_page;
+                this.to = response.data.to;
+                this.from = response.data.from;
+                this.total = response.data.total;
+            }, (response) => {
+                // error callback
+                sweetAlert("Oops...", "Something went wrong!", "error");
+                console.log(response);
+            });
         }
     }
+}
 </script>
