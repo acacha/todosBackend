@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\TaskRepository;
 use App\Task;
 use App\Transformers\TaskTransformer;
+use Auth;
 use Illuminate\Http\Request;
 
 /**
@@ -70,11 +71,10 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        //        $request->input('name');
-//        dd($request->all());
-
+        if (!$request->has('user_id')) {
+            $request->merge(['user_id' => Auth::id() ]);
+        }
         Task::create($request->all());
-//        Task::create($request->all());
     }
 
     /**

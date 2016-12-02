@@ -30,7 +30,7 @@
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#"  v-on:click="setVisibility('all')">All</a></li>
+                        <li><a href="#"  @click="setVisibility('all')">All</a></li>
                         <li><a href="#"  @click="setVisibility('active')">Active</a></li>
                         <li><a href="#/" @click="setVisibility('completed')">Completed</a></li>
                     </ul>
@@ -139,12 +139,15 @@ export default {
             if (!value) {
                 return;
             }
-            this.todos.push({
+            var todo = {
                 name: value,
                 priority: 1,
                 done: false
-            });
+            };
+            this.todos.push(todo);
             this.newTodo = '';
+            this.addTodoToApi(todo);
+            this.fetchPage(this.page);
         },
         setVisibility: function(visibility) {
             this.visibility = visibility;
@@ -152,8 +155,20 @@ export default {
         fetchData: function() {
             return this.fetchPage(1);
         },
+        addTodoToApi: function(todo) {
+            this.$http.post('/api/v1/task', {
+                    name: todo.name,
+                    priority: todo.priority,
+                    done: todo.done
+                }).then((response) => {
+                console.log(response);
+            }, (response) => {
+                // error callback
+                sweetAlert("Oops...", "Something went wrong!", "error");
+                console.log(response);
+            });
+        },
         fetchPage: function(page) {
-            // GET /someUrl
             this.$http.get('/api/v1/task?page=' + page).then((response) => {
                 console.log(response);
                 this.todos = response.data.data;
