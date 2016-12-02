@@ -76,7 +76,11 @@
             <div class="box-footer clearfix">
                 <span class="pull-left">Showing {{ from }} to {{ to }} of {{ total }} entries</span>
 
-                <pagination :current-page="1"></pagination>
+                <pagination
+                        :current-page="page"
+                        :items-per-page="perPage"
+                        :total-items="total"
+                        @page-changed="pageChanged"></pagination>
             </div>
         </div>
     </div>
@@ -95,7 +99,8 @@ export default {
             perPage: 5,
             from: 0,
             to: 0,
-            total: 0
+            total: 0,
+            page: 1
         }
     },
     computed: {
@@ -126,7 +131,8 @@ export default {
     },
     methods: {
         pageChanged: function(pageNum) {
-
+            this.page = pageNum;
+            this.fetchPage(pageNum);
         },
         addTodo: function() {
             var value = this.newTodo && this.newTodo.trim();
