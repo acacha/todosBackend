@@ -22,6 +22,11 @@ class TasksApiTest extends TestCase
      */
     const DEFAULT_NUMBER_OF_TASKS = 5;
 
+    public static function setUpBeforeClass()
+    {
+        passthru('php artisan passport:install');
+    }
+
     /**
      * Seed database with tasks.
      *

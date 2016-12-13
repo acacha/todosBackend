@@ -52,7 +52,9 @@
                     <tbody>
                     <tr v-for="(todo, index) in filteredTodos">
                         <td>{{index + from }}</td>
-                        <td>{{todo.name}}</td>
+                        <td><span v-if="editing">{{todo.name}}</span>
+                            <span v-else><input v-model="todo.name"></span>
+                             </td>
                         <td>{{todo.priority}}</td>
                         <td>{{todo.done}}</td>
                         <td>
