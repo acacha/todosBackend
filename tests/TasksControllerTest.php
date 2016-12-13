@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Spatie\Permission\Models\Role;
 
 /**
  * Class TasksControllerTest
@@ -13,14 +14,66 @@ class TasksControllerTest extends TestCase
     use DatabaseMigrations;
 
     /**
-     * A basic test example.
-     *
-     * @return void
+     * @group failing
      */
-    public function testExample()
+    public function testAuthorizedIndex()
     {
-        $this->assertTrue(true);
+        //1 Preparation
+        $user = $this->login();
+        Role::create(["name" => "admin"]);
+        $user->assignRole('admin');
+
+        //2 Execució
+        $this->get('tasks');
+
+        //3 Asserts
+        $this->assertResponseOk();
     }
+
+    /**
+     *
+     */
+    public function testNotAuthorizedIndex()
+    {
+        //1 Preparation
+        $this->login();
+
+        //2 Execució
+        $this->get('tasks');
+
+        //3 Asserts
+        $this->assertResponseStatus(403);
+    }
+
+
+    protected function login()
+    {
+        $user = factory(\App\User::class)->create();
+        $this->actingAs($user);
+        return $user;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      *
@@ -45,6 +98,8 @@ class TasksControllerTest extends TestCase
 
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $tasks);
     }
+
+
 
 //    public function __call($method, $args)
 //    {
