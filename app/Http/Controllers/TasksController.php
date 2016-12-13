@@ -6,6 +6,7 @@ use App\Repositories\TaskRepository;
 use App\Task;
 use App\Transformers\TaskTransformer;
 use Auth;
+use Gate;
 use Illuminate\Http\Request;
 
 /**
@@ -42,13 +43,8 @@ class TasksController extends Controller
      */
     public function index(Request $request)
     {
-//        abort(500);
-        // No metadata
-        // Pagination
-        // No error messages
-        // Transformations: hem de transformar el que ensenyem
+        // The current user can update the post...
         $tasks = Task::paginate(15);
-
         return $this->generatePaginatedResponse($tasks, ['propietari' => 'Sergi Tur']);
     }
 

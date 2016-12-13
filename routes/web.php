@@ -1,8 +1,18 @@
 <?php
 
+use App\Task;
+
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/tasks', function () {
-        return view('tasks');
+    Route::group(['middleware' => 'can:show-tasks'], function () {
+        Route::get('/tasks', function () {
+            return view('tasks');
+        });
+    });
+
+    Route::get('tasks1', function()
+    {
+        $tasks = Task::all();
+        return view('tasks.index', ['tasks' => $tasks]);
     });
 
     Route::get('/profile/tokens', function () {
