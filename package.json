@@ -19,7 +19,8 @@
     "font-awesome": "^4.6.3",
     "icheck": "^1.0.2",
     "ionicons": "^3.0.0",
-    "toastr": "^2.1.2"
+    "toastr": "^2.1.2",
+    "js-cookie": "^2.1.0"
   },
   "dependencies": {
     "axios": "^0.15.2",

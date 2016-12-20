@@ -40,7 +40,27 @@ require('sweetalert');
 //    next();
 //});
 
+//X-CSRF-TOKEN is used by javascript frameworks like Vue or Angular t avoid CSRF attacks.
+//X-CSRF-TOKEN has to be the token unencripted because encripted cookies only works with Laravel (server side no client
+// side javascript frameworks). XSRF-TOKEN is the same CSRF token but encripted
+//https://laravel.com/docs/5.0/routing#csrf-protection
+//Note: The difference between the X-CSRF-TOKEN and X-XSRF-TOKEN is that the first uses a plain text value and the
+// latter uses an encrypted value, because cookies in Laravel are always encrypted.
+// If you use the csrf_token() function to supply the token value, you probably want to use the X-CSRF-TOKEN header.
+
+console.log(Laravel.csrfToken);
 axios.defaults.headers.common['X-CSRF-TOKEN'] = Laravel.csrfToken;
+
+// if (Cookies.get('XSRF-TOKEN') !== undefined) {
+//     request.headers.set('X-XSRF-TOKEN', Cookies.get('XSRF-TOKEN'));
+// }
+
+window.Cookies = require('js-cookie');
+if (Cookies.get('XSRF-TOKEN') !== undefined) {
+    console.log("SHIT!");
+    axios.defaults.headers.common['XSRF-TOKEN'] = Cookies.get('XSRF-TOKEN');
+}
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
