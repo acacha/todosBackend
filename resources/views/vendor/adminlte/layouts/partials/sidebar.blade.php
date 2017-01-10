@@ -30,13 +30,8 @@
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-            <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
-            <li><a href="/profile/tokens"><i class='fa fa-link'></i> <span>Tokens</span></a></li>
-            <li><a href="/tasks"><i class='fa fa-link'></i> <span>Tasques</span></a></li>
-        </ul><!-- /.sidebar-menu -->
+        {{ Menu::sidebar() }}
+        <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
 </aside>
