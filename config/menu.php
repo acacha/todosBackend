@@ -29,6 +29,7 @@ Menu::macro('sidebar', function () {
 //        ->url('http://www.google.com', 'Google')
         ->add(Menu::adminlteSeparator('Acacha Adminlte'))
         #adminlte_menu
+        ->add(Link::toUrl('/profile/tokens', 'Tokens'))
         ->add(Link::toUrl('boxmodel', 'Boxmodel'))
         ->add(Link::toUrl('boxmodel', 'Boxmodel'))
         ->add(Menu::adminlteSeparator('SECONDARY MENU'))
