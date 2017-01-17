@@ -51,6 +51,10 @@ require('sweetalert');
 console.log(Laravel.csrfToken);
 axios.defaults.headers.common['X-CSRF-TOKEN'] = Laravel.csrfToken;
 
+// axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.headers.common[''] = access_token;
+
+
 // if (Cookies.get('XSRF-TOKEN') !== undefined) {
 //     request.headers.set('X-XSRF-TOKEN', Cookies.get('XSRF-TOKEN'));
 // }

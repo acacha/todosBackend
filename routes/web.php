@@ -5,7 +5,11 @@ use App\Task;
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'can:show,App\Task'], function () {
         Route::get('/tasks', function () {
-            return view('tasks');
+//            $token = "TODO";
+//            $data = [
+//                "access_token" => $token
+//            ];
+            return view('tasks',$data);
         });
     });
 
@@ -23,7 +27,23 @@ Route::group(['middleware' => 'auth'], function () {
         dd(App\User::paginate());
     });
     #adminlte_routes
+    Route::get('bootstraplayout', 'BootstraplayoutController@index')->name('bootstraplayout');
+
+    Route::get('flexboxlayout2', 'Flexboxlayout2Controller@index')->name('flexboxlayout2');
+
+    Route::get('flexboxlayout1', 'Flexboxlayout1Controller@index')->name('flexboxlayout1');
+
+    Route::get('flexboxlayout', 'FlexboxlayoutController@index')->name('flexboxlayout');
+
+    Route::get('csstables', 'CsstablesController@index')->name('csstables');
+
+    Route::get('layoutfloat', 'LayoutfloatController@index')->name('layoutfloat');
+
     Route::get('boxmodel', 'BoxmodelController@index')->name('boxmodel');
+
+    Route::get('float', function () {
+        return view('float');
+    });
 
 });
 

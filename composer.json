@@ -11,8 +11,9 @@
         "barryvdh/laravel-debugbar": "^2.3",
         "acacha/admin-lte-template-laravel": "dev-master",
         "laravel/passport": "^1.0",
-        "spatie/laravel-permission": "^1.5",
-        "spatie/laravel-menu": "^2.0"
+        "spatie/laravel-permission": "^1.6",
+        "spatie/laravel-menu": "^2.0",
+        "barryvdh/laravel-cors": "^0.8.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

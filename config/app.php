@@ -169,8 +169,6 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
 
-        //
-
         /*
          * Application Service Providers...
          */
@@ -187,6 +185,8 @@ return [
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
+
         //llum_providers
 
         /*
