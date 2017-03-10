@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
