@@ -5,10 +5,10 @@ use App\Task;
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'can:show,App\Task'], function () {
         Route::get('/tasks', function () {
-//            $token = "TODO";
-//            $data = [
-//                "access_token" => $token
-//            ];
+            $token = "TODO";
+            $data = [
+                "access_token" => $token
+            ];
             return view('tasks',$data);
         });
     });
