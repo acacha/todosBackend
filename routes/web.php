@@ -1,9 +1,9 @@
 <?php
 
-use App\Task;
+use Acacha\TodosBackend\Task;
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::group(['middleware' => 'can:show,App\Task'], function () {
+    Route::group(['middleware' => 'can:show,Acacha\TodosBackend\Task'], function () {
         Route::get('/tasks', function () {
             $token = "TODO";
             $data = [
@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('users', function () {
-        dd(App\User::paginate());
+        dd(Acacha\TodosBackend\User::paginate());
     });
     #adminlte_routes
     Route::get('bootstraplayout', 'BootstraplayoutController@index')->name('bootstraplayout');

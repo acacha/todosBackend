@@ -15,7 +15,7 @@ class AdminUserSeeder extends Seeder
     public function run()
     {
         try {
-            factory(App\User::class)->create([
+            factory(Acacha\TodosBackend\User::class)->create([
                     "name" => "Sergi Tur Badenas",
                     "email" => "sergiturbadenas@gmail.com",
                     "password" => bcrypt(env('ADMIN_PWD', '123456'))]

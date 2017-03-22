@@ -53,7 +53,7 @@ class AcachaAdminLTELaravelTest extends BrowserKitTest
      */
     public function testLandingPageWithUserLogged()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(Acacha\TodosBackend\User::class)->create();
 
         $this->actingAs($user)
             ->visit('/')
@@ -82,7 +82,7 @@ class AcachaAdminLTELaravelTest extends BrowserKitTest
      */
     public function testLogin()
     {
-        $user = factory(App\User::class)->create(['password' => Hash::make('passw0RD')]);
+        $user = factory(Acacha\TodosBackend\User::class)->create(['password' => Hash::make('passw0RD')]);
 
         view()->share('user', $user);
 
@@ -139,7 +139,7 @@ class AcachaAdminLTELaravelTest extends BrowserKitTest
      */
     public function testHomePageForUnauthenticatedUsers()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(Acacha\TodosBackend\User::class)->create();
         view()->share('user', $user);
         $this->visit('/home')
             ->seePageIs('/login');
@@ -152,7 +152,7 @@ class AcachaAdminLTELaravelTest extends BrowserKitTest
      */
     public function testHomePageForAuthenticatedUsers()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(Acacha\TodosBackend\User::class)->create();
         view()->share('user', $user);
         $this->actingAs($user)
             ->visit('/home')
@@ -166,7 +166,7 @@ class AcachaAdminLTELaravelTest extends BrowserKitTest
      */
     public function testLogout()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(Acacha\TodosBackend\User::class)->create();
         view()->share('user', $user);
         $form = $this->actingAs($user)->visit('/home')->getForm('logout');
 
@@ -195,7 +195,7 @@ class AcachaAdminLTELaravelTest extends BrowserKitTest
      */
     public function testNewUserRegistration()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(Acacha\TodosBackend\User::class)->create();
         view()->share('user', $user);
         $this->visit('/register')
             ->type('Sergi Tur Badenas', 'name')
@@ -230,7 +230,7 @@ class AcachaAdminLTELaravelTest extends BrowserKitTest
      */
     public function testSendPasswordReset()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(Acacha\TodosBackend\User::class)->create();
 
         $this->visit('password/reset')
             ->type($user->email, 'email')
