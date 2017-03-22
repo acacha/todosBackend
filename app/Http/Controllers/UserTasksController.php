@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Acacha\TodosBackend\Http\Controllers;
 
-use App\Transformers\TaskTransformer;
-use App\User;
+use Acacha\TodosBackend\Transformers\TaskTransformer;
+use Acacha\TodosBackend\User;
 use Illuminate\Http\Request;
 
 /**
  * Class UserTasksController
- * @package App\Http\Controllers
+ * @package Acacha\TodosBackend\Http\Controllers
  */
 class UserTasksController extends Controller
 {

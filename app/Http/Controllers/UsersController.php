@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Acacha\TodosBackend\Http\Controllers;
 
-use App\Transformers\UserTransformer;
-use App\User;
+use Acacha\TodosBackend\Transformers\UserTransformer;
+use Acacha\TodosBackend\User;
 use Illuminate\Http\Request;
 
 

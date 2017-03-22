@@ -172,11 +172,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Acacha\TodosBackend\Providers\AppServiceProvider::class,
+        Acacha\TodosBackend\Providers\AuthServiceProvider::class,
+        // Acacha\TodosBackend\Providers\BroadcastServiceProvider::class,
+        Acacha\TodosBackend\Providers\EventServiceProvider::class,
+        Acacha\TodosBackend\Providers\RouteServiceProvider::class,
 
         /*
          * Acacha Llum Service Providers...

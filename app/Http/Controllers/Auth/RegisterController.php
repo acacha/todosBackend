@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Acacha\TodosBackend\Http\Controllers\Auth;
 
-use App\User;
+use Acacha\TodosBackend\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Acacha\TodosBackend\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 /**

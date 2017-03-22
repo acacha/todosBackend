@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Transformers\Contracts;
+namespace Acacha\TodosBackend\Transformers\Contracts;
 
 interface Transformer
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Acacha\TodosBackend;
 
 use Illuminate\Database\Eloquent\Model;
 

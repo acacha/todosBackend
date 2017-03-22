@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Acacha\TodosBackend\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+        'Acacha\TodosBackend\Events\SomeEvent' => [
+            'Acacha\TodosBackend\Listeners\EventListener',
         ],
     ];
 

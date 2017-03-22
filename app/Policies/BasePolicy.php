@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Policies;
+namespace Acacha\TodosBackend\Policies;
 
-use App\Task;
-use App\User;
+use Acacha\TodosBackend\Task;
+use Acacha\TodosBackend\User;
 
 /**
  * Class BasePolicy.
  *
- * @package App\Policies
+ * @package Acacha\TodosBackend\Policies
  */
 abstract class BasePolicy
 {
@@ -17,7 +17,7 @@ abstract class BasePolicy
     /**
      * Determine whether the user can list the tasks.
      *
-     * @param  \App\User  $user
+     * @param  \Acacha\TodosBackend\User  $user
      * @return mixed
      */
     public function show(User $user)
@@ -28,8 +28,8 @@ abstract class BasePolicy
     /**
      * Determine whether the user can view the task.
      *
-     * @param  \App\User  $user
-     * @param  \App\Task  $task
+     * @param  \Acacha\TodosBackend\User  $user
+     * @param  \Acacha\TodosBackend\Task  $task
      * @return mixed
      */
     public function view(User $user, Task $task)
@@ -40,7 +40,7 @@ abstract class BasePolicy
     /**
      * Determine whether the user can create tasks.
      *
-     * @param  \App\User  $user
+     * @param  \Acacha\TodosBackend\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -51,8 +51,8 @@ abstract class BasePolicy
     /**
      * Determine whether the user can update the task.
      *
-     * @param  \App\User  $user
-     * @param  \App\Task  $task
+     * @param  \Acacha\TodosBackend\User  $user
+     * @param  \Acacha\TodosBackend\Task  $task
      * @return mixed
      */
     public function update(User $user, Task $task)
@@ -66,8 +66,8 @@ abstract class BasePolicy
     /**
      * Determine whether the user can delete the task.
      *
-     * @param  \App\User  $user
-     * @param  \App\Task  $task
+     * @param  \Acacha\TodosBackend\User  $user
+     * @param  \Acacha\TodosBackend\Task  $task
      * @return mixed
      */
     public function delete(User $user, Task $task)

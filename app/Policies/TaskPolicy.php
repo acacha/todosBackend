@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Policies;
+namespace Acacha\TodosBackend\Policies;
 
-use App\User;
-use App\Task;
+use Acacha\TodosBackend\User;
+use Acacha\TodosBackend\Task;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 /**
  * Class TaskPolicy.
  *
- * @package App\Policies
+ * @package Acacha\TodosBackend\Policies
  */
 class TaskPolicy extends BasePolicy
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Transformers;
+namespace Acacha\TodosBackend\Transformers;
 
-use App\Exceptions\IncorrectModelException;
-use App\Task;
+use Acacha\TodosBackend\Exceptions\IncorrectModelException;
+use Acacha\TodosBackend\Task;
 
 /**
  * Class TaskTransformer.
  *
- * @package App\Transformers
+ * @package Acacha\TodosBackend\Transformers
  */
 class TaskTransformer extends Transformer
 {

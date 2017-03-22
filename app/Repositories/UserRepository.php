@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories;
+namespace Acacha\TodosBackend\Repositories;
 
-use \App\Repositories\Contracts\Repository;
-use App\User;
+use \Acacha\TodosBackend\Repositories\Contracts\Repository;
+use Acacha\TodosBackend\User;
 
 class UserRepository implements Repository
 {

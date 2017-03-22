@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Acacha\TodosBackend\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

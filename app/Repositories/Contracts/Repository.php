@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Contracts;
+namespace Acacha\TodosBackend\Repositories\Contracts;
 
 interface Repository
 {

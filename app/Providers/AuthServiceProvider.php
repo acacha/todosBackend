@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Acacha\TodosBackend\Providers;
 
 use Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -10,7 +10,7 @@ use Route;
 /**
  * Class AuthServiceProvider.
  *
- * @package App\Providers
+ * @package Acacha\TodosBackend\Providers
  */
 class AuthServiceProvider extends ServiceProvider
 {
@@ -20,8 +20,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Task' => 'App\Policies\TaskPolicy',
-//        'App\User' => 'App\Policies\UserPolicy',
+        'Acacha\TodosBackend\Task' => 'Acacha\TodosBackend\Policies\TaskPolicy',
+//        'Acacha\TodosBackend\User' => 'Acacha\TodosBackend\Policies\UserPolicy',
     ];
 
     /**

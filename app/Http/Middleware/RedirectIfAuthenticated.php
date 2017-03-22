@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Acacha\TodosBackend\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

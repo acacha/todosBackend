@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories;
+namespace Acacha\TodosBackend\Repositories;
 
-use \App\Repositories\Contracts\Repository;
-use App\Task;
+use \Acacha\TodosBackend\Repositories\Contracts\Repository;
+use Acacha\TodosBackend\Task;
 
 class TaskRepository implements Repository
 {

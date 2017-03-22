@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Transformers;
+namespace Acacha\TodosBackend\Transformers;
 
-use \App\Transformers\Contracts\Transformer as TransformerContract;
+use \Acacha\TodosBackend\Transformers\Contracts\Transformer as TransformerContract;
 
 abstract class Transformer implements TransformerContract {
     public function transformCollection($resources) {
