@@ -15373,7 +15373,43 @@ Vue.component('chat-form', __webpack_require__(100));
 Vue.component('register-form', __webpack_require__(104));
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+
+  data: {
+    messages: []
+  },
+
+  created: function created() {
+    var _this = this;
+
+    this.fetchMessages();
+
+    Echo.channel('chat').listen('MessageSent', function (e) {
+      _this.messages.push({
+        message: e.message.message,
+        user: e.user
+      });
+    });
+  },
+
+
+  methods: {
+    fetchMessages: function fetchMessages() {
+      var _this2 = this;
+
+      axios.get('/user/messages').then(function (response) {
+        _this2.messages = response.data;
+      });
+    },
+    addMessage: function addMessage(message) {
+      this.messages.push(message);
+
+      axios.post('/messages', message).then(function (response) {
+        console.log(response.data);
+      });
+    }
+  }
+
 });
 
 /***/ }),

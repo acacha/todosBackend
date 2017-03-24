@@ -44,6 +44,8 @@ class MessagesController extends BaseController
 
         broadcast(new MessageSent($user,$message))->toOthers();
 
+        $user->notify(new MessageSent($user,$message));
+
         return ['status' => 'Message Sent!'];
     }
 

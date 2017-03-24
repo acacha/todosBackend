@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('messages', 'MessagesController@sendMessage');
 
-    Route::get('user/messages', 'ChatController@fetchMessages');
+    Route::get('user/messages', 'MessagesController@fetchMessages');
 
     Route::get('bootstraplayout', 'BootstraplayoutController@index')->name('bootstraplayout');
 

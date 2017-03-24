@@ -53,4 +53,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class);
     }
+
+    /**
+     * @return mixed
+     */
+    public function routeNotificationForGcm()
+    {
+        return $this->gcm_token;
+    }
 }
