@@ -13,7 +13,8 @@
         "laravel/passport": "^2.0",
         "spatie/laravel-permission": "^1.6",
         "spatie/laravel-menu": "^2.0",
-        "barryvdh/laravel-cors": "^0.8.2"
+        "barryvdh/laravel-cors": "^0.8.2",
+        "laravel-notification-channels/gcm": "^0.0.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

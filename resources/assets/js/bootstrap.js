@@ -50,9 +50,20 @@ Vue.component('login-input-field', require('./components/LoginInputField.vue'));
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from "laravel-echo"
+import Echo from "laravel-echo"
+
+import io from "socket.io-client"
+window.io = io
 
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
+//     key: '0beb4667296e55481ee9',
+//     cluster: 'mt1',
+//     encrypted: true
 // });
+
+window.Echo = new Echo({
+  broadcaster: 'socket.io',
+  host: 'localhost:6001',
+  namespace: 'Acacha.Chat'
+});

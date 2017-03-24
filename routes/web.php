@@ -27,6 +27,12 @@ Route::group(['middleware' => 'auth'], function () {
         dd(Acacha\TodosBackend\User::paginate());
     });
     #adminlte_routes
+    Route::get('messages', 'MessagesController@index')->name('messages');
+
+    Route::post('messages', 'MessagesController@sendMessage');
+
+    Route::get('user/messages', 'ChatController@fetchMessages');
+
     Route::get('bootstraplayout', 'BootstraplayoutController@index')->name('bootstraplayout');
 
     Route::get('flexboxlayout2', 'Flexboxlayout2Controller@index')->name('flexboxlayout2');
@@ -44,7 +50,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('float', function () {
         return view('float');
     });
-
 });
 
 Route::get('/', function () {

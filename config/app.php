@@ -168,6 +168,7 @@ return [
          */
         Laravel\Passport\PassportServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        NotificationChannels\Gcm\GcmServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -186,18 +187,8 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
-
-        //llum_providers
-
-        /*
-         * Acacha Llum Service Providers...
-         *
-         * See: https://github.com/acacha/llum
-         */
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
         Spatie\Menu\Laravel\MenuServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
         #llum_providers
 
     ],
