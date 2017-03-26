@@ -3,6 +3,7 @@
 namespace Acacha\TodosBackend\Http\Controllers;
 
 use Acacha\TodosBackend\Events\MessageSent;
+use Acacha\TodosBackend\Notifications\MessageSent as MessageSentNotification;
 use Acacha\TodosBackend\Message;
 use Auth;
 use Illuminate\Http\Request;
@@ -44,7 +45,7 @@ class MessagesController extends BaseController
 
         broadcast(new MessageSent($user,$message))->toOthers();
 
-        $user->notify(new MessageSent($user,$message));
+        $user->notify(new MessageSentNotification($user,$message));
 
         return ['status' => 'Message Sent!'];
     }

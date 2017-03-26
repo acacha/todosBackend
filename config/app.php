@@ -169,6 +169,8 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         NotificationChannels\Gcm\GcmServiceProvider::class,
+        NotificationChannels\OneSignal\OneSignalServiceProvider::class,
+
 
         /*
          * Application Service Providers...

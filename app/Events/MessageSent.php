@@ -5,6 +5,7 @@ namespace Acacha\TodosBackend\Events;
 use Acacha\TodosBackend\Message;
 use Acacha\TodosBackend\User;
 use Illuminate\Broadcasting\Channel;
+use Illuminate\Notifications\Notification;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
