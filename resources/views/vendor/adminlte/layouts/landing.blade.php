@@ -290,8 +290,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="{{ asset('/js/app.js') }}"></script>
-<script src="{{ asset('/js/smoothscroll.js') }}"></script>
+<script src="{{ mix('/js/app.js') }}"></script>
 <script>
     $('.carousel').carousel({
         interval: 3500
