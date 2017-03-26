@@ -65,5 +65,5 @@ window.io = io
 window.Echo = new Echo({
   broadcaster: 'socket.io',
   host: window.location.hostname + ':6001',
-  namespace: 'Acacha.TodosBakend.Events'
+  namespace: 'Acacha.TodosBackend.Events'
 });
