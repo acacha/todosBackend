@@ -170,7 +170,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         NotificationChannels\Gcm\GcmServiceProvider::class,
         NotificationChannels\OneSignal\OneSignalServiceProvider::class,
-
+        Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
          * Application Service Providers...
