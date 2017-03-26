@@ -14,28 +14,28 @@ use NotificationChannels\Gcm\GcmChannel;
 use NotificationChannels\Gcm\GcmMessage;
 
 /**
- * Class MessageSent.
+ * Class GcmTokenCreated.
  *
  * @package Acacha\TodosBackend\Events
  */
-class MessageSent extends Notification implements ShouldBroadcast
+class GcmTokenCreated extends Notification implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $user;
 
-    public $message;
+    public $token;
 
     /**
-     * MessageSent constructor.
+     * GcmTokenCreated constructor.
      *
      * @param $user
-     * @param $message
+     * @param $token
      */
-    public function __construct(User $user, Message $message)
+    public function __construct(User $user, Message $token)
     {
         $this->user = $user;
-        $this->message = $message;
+        $this->message = $token;
     }
 
 
@@ -49,24 +49,4 @@ class MessageSent extends Notification implements ShouldBroadcast
         return new Channel('chat');
     }
 
-    /**
-     * @param $notifiable
-     * @return array
-     */
-    public function via($notifiable)
-    {
-        return [GcmChannel::class];
-    }
-
-    /**
-     * @param $notifiable
-     * @return mixed
-     */
-    public function toGcm($notifiable)
-    {
-        return GcmMessage::create()
-            ->badge(1)
-            ->title($this->user)
-            ->message($this->message);
-    }
 }

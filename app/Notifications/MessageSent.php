@@ -45,7 +45,7 @@ class MessageSent extends Notification
      */
     public function via($notifiable)
     {
-        return [OneSignalChannel::class];
+        return [GcmChannel::class];
     }
 
     /**

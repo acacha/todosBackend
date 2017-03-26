@@ -55,10 +55,20 @@ class User extends Authenticatable
     }
 
     /**
+     * A user can have many GCM tokens.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function gcmTokens()
+    {
+        return $this->hasMany(GcmToken::class);
+    }
+
+    /**
      * @return mixed
      */
     public function routeNotificationForGcm()
     {
-        return $this->gcm_token;
+        return 'eB-3iFw8lRw:APA91bFHGiE3zEoB7AR8NqkAceF_TRC4tfAEq-Fkt_bTOAincqmVVoQfSASARqL42baPiZq7K-e_S--07jiTBF8Yu2DDZKrrG02Utn82JSNiIBHyAlm0zI6Y7x_7ZDutGq069uhbb93b';
     }
 }

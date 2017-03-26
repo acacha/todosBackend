@@ -9,6 +9,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Response;
 
+/**
+ * Class Controller.
+ *
+ * @package Acacha\TodosBackend\Http\Controllers
+ */
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;

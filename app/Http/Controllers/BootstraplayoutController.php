@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 use Illuminate\Routing\Controller as BaseController;
 
-
+/**
+ * Class BootstraplayoutController.
+ *
+ * @package Acacha\TodosBackend\Http\Controllers
+ */
 class BootstraplayoutController extends BaseController
 {
     //

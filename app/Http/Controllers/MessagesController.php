@@ -7,13 +7,14 @@ use Acacha\TodosBackend\Notifications\MessageSent as MessageSentNotification;
 use Acacha\TodosBackend\Message;
 use Auth;
 use Illuminate\Http\Request;
+use Log;
 
 /**
  * Class MessagesController.
  *
  * @package Acacha\TodosBackend\Http\Controllers
  */
-class MessagesController extends BaseController
+class MessagesController extends TodosBaseController
 {
     //
     /**
@@ -45,7 +46,12 @@ class MessagesController extends BaseController
 
         broadcast(new MessageSent($user,$message))->toOthers();
 
+        Log::debug('Before notify');
+
         $user->notify(new MessageSentNotification($user,$message));
+
+        Log::debug('After notify');
+
 
         return ['status' => 'Message Sent!'];
     }
