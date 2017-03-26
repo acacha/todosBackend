@@ -2,6 +2,7 @@
 
 namespace Acacha\TodosBackend;
 
+use Acacha\TodosBackend\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -71,5 +72,16 @@ class User extends Authenticatable
     {
 //        return 'eB-3iFw8lRw:APA91bFHGiE3zEoB7AR8NqkAceF_TRC4tfAEq-Fkt_bTOAincqmVVoQfSASARqL42baPiZq7K-e_S--07jiTBF8Yu2DDZKrrG02Utn82JSNiIBHyAlm0zI6Y7x_7ZDutGq069uhbb93b';
         return $this->gcmTokens->pluck('registration_id')->toArray();
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
     }
 }
