@@ -66,7 +66,8 @@ class MessageSent extends Notification implements ShouldBroadcast
     {
         return GcmMessage::create()
             ->badge(1)
-            ->title($this->user)
-            ->message($this->message);
+            ->title($this->user->name)
+            ->message($this->message->message)
+            ->priority(GcmMessage::PRIORITY_HIGH);
     }
 }

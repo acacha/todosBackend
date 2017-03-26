@@ -44,7 +44,7 @@ class GcmTokenCreated extends Notification implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('chat');
+        return new Channel('todo');
     }
 
 }
