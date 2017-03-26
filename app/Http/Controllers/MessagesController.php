@@ -63,7 +63,10 @@ class MessagesController extends TodosBaseController
      */
     public function fetchMessages()
     {
+        Log::debug('Processing Fetch messages');
+        dump("RESULT!!!!!!!!!!!");
         //Lazy loading -> Eager Loading
+        return "RESULT!";
         return Message::with('user')->get();
     }
 }

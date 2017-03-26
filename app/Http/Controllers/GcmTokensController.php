@@ -7,7 +7,8 @@ use Auth;
 use Illuminate\Http\Request;
 
 /**
- * Class GcmTokensController
+ * Class GcmTokensController.
+ *
  * @package Acacha\TodosBackend\Http\Controllers
  */
 class GcmTokensController extends TodosBaseController
