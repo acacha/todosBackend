@@ -19,7 +19,7 @@ class GcmTokensController extends TodosBaseController
     {
         $user = Auth::user();
 
-        $token = $user->gcmTokens()->create([
+        $token = $user->gcmTokens()->firstOrCreate([
             'registration_id' => $request->input('registration_id')
         ]);
 
