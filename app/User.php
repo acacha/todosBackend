@@ -69,6 +69,7 @@ class User extends Authenticatable
      */
     public function routeNotificationForGcm()
     {
-        return 'eB-3iFw8lRw:APA91bFHGiE3zEoB7AR8NqkAceF_TRC4tfAEq-Fkt_bTOAincqmVVoQfSASARqL42baPiZq7K-e_S--07jiTBF8Yu2DDZKrrG02Utn82JSNiIBHyAlm0zI6Y7x_7ZDutGq069uhbb93b';
+//        return 'eB-3iFw8lRw:APA91bFHGiE3zEoB7AR8NqkAceF_TRC4tfAEq-Fkt_bTOAincqmVVoQfSASARqL42baPiZq7K-e_S--07jiTBF8Yu2DDZKrrG02Utn82JSNiIBHyAlm0zI6Y7x_7ZDutGq069uhbb93b';
+        return $this->gcmTokens()->toArray();
     }
 }

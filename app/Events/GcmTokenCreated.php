@@ -2,7 +2,7 @@
 
 namespace Acacha\TodosBackend\Events;
 
-use Acacha\TodosBackend\Message;
+use Acacha\TodosBackend\GcmToken;
 use Acacha\TodosBackend\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Notifications\Notification;
@@ -10,8 +10,6 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use NotificationChannels\Gcm\GcmChannel;
-use NotificationChannels\Gcm\GcmMessage;
 
 /**
  * Class GcmTokenCreated.
@@ -32,7 +30,7 @@ class GcmTokenCreated extends Notification implements ShouldBroadcast
      * @param $user
      * @param $token
      */
-    public function __construct(User $user, Message $token)
+    public function __construct(User $user, GcmToken $token)
     {
         $this->user = $user;
         $this->message = $token;
