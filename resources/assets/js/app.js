@@ -19,6 +19,12 @@ Vue.component('chat-form', require('./components/ChatForm.vue'));
 
 Vue.component('register-form', require('./components/auth/RegisterForm.vue'));
 
+// No va a v2.0
+// Vue.transition('bounce', {
+//   enterClass: 'bounceIn',
+//   leaveClass: 'bounceOut'
+// });
+
 const app = new Vue({
   el: '#app',
 

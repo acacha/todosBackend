@@ -1,24 +1,38 @@
 <template>
  <form method="post" @submit.prevent="submit" @keydown="form.errors.clear($event.target.name)">
   <div class="form-group has-feedback" :class="{ 'has-error': form.errors.has('name') }">
-   <input type="text" class="form-control" placeholder="Your name here" name="name" value="" v-model="form.name" />
+
+   <!-- WET -->
+   <input type="text" class="form-control" placeholder="Your name here" name="name" value="" v-model="form.name" autofocus/>
+
    <span class="glyphicon glyphicon-user form-control-feedback"></span>
-   <span class="help-block" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
+   <transition name="bounce"
+               enter-active-class="animated bounceIn"
+               leave-active-class="animated bounceOut">
+    <span class="help-block" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
+   </transition>
+
   </div>
 
   <div class="form-group has-feedback" :class="{ 'has-error': form.errors.has('email') }">
    <input type="email" class="form-control" placeholder="Your email here" name="email" value="" v-model="form.email"/>
    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-   <span class="help-block" v-if="form.errors.has('email')" v-text="form.errors.get('email')"></span>
+   <transition name="fade">
+    <span class="help-block" v-if="form.errors.has('email')" v-text="form.errors.get('email')"></span>
+   </transition>
   </div>
   <div class="form-group has-feedback" :class="{ 'has-error': form.errors.has('password') }">
    <input type="password" class="form-control" placeholder="Password here" name="password" v-model="form.password"/>
    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-   <span class="help-block" v-if="form.errors.has('password')" v-text="form.errors.get('password')"></span>
+   <transition name="fade">
+     <span class="help-block" v-if="form.errors.has('password')" v-text="form.errors.get('password')"></span>
+   </transition>
   </div>
   <div class="form-group has-feedback">
    <input type="password" class="form-control" placeholder="Password here" name="password_confirmation" v-model="form.password_confirmation"/>
+   <transition name="fade">
    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+   </transition>
   </div>
   <div class="row">
    <div class="col-xs-7">
@@ -42,19 +56,27 @@
 
 </template>
 
+<style>
+
+.fade-enter-active, .fade-leave-active {
+ transition: opacity .5s ease;
+}
+
+.fade-enter, .fade-leave-to {
+ opacity: 0;
+}
+
+</style>
+
 <script>
 
 import Form from 'acacha-forms'
 
 export default {
   mounted() {
-    console.log('Component mounted!')
     let form =  new FormData(document.querySelector("form"))
-    console.log(form)
-    console.log(form.fields)
-
     this.initialitzeICheck()
-
+    this.focus()
   },
   data: function () {
     return {
@@ -76,8 +98,7 @@ export default {
       $('input').iCheck({
         checkboxClass: 'icheckbox_square-blue',
         radioClass: 'iradio_square-blue',
-        increaseArea: '20%',
-        inheritClass: true
+        increaseArea: '20%'
       }).on('ifChecked', function(event){
         component.form.set('terms',true)
         component.form.errors.clear('terms')

@@ -18,7 +18,7 @@ use NotificationChannels\OneSignal\OneSignalMessage;
  *
  * @package Acacha\TodosBackend\Notifications
  */
-class MessageSent extends Notification
+class MessageSent extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -45,7 +45,7 @@ class MessageSent extends Notification
      */
     public function via($notifiable)
     {
-        return [GcmChannel::class];
+        return [GcmChannel::class , 'email'];
     }
 
     /**
