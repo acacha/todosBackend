@@ -64,6 +64,6 @@ window.io = io
 
 window.Echo = new Echo({
   broadcaster: 'socket.io',
-  host: 'http://todosbackend.2dam.acacha.org:6001',
+  host: 'https://laravel.echo.server.2dam.acacha.org:6002',
   namespace: 'Acacha.TodosBackend.Events'
 });
