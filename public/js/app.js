@@ -16730,7 +16730,7 @@ window.io = __WEBPACK_IMPORTED_MODULE_1_socket_io_client___default.a;
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
   broadcaster: 'socket.io',
-  host: 'https://laravel.echo.server.2dam.acacha.org:6002',
+  host: window.Laravel.echoServerURL,
   namespace: 'Acacha.TodosBackend.Events'
 });
 
