@@ -17,7 +17,7 @@
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
-            'echoServerURL' => env('LARAVEL_ECHO_SERVER_URL','https://localhost:6001'),
+            'echoServerURL' => env('LARAVEL_ECHO_SERVER_URL','prova'),
         ]) !!};
     </script>
 
