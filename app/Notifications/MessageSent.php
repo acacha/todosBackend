@@ -111,6 +111,7 @@ class MessageSent extends Notification implements ShouldQueue
         $url = url('/messages/' . $this->message->id);
 
         return TelegramMessage::create()
+            ->to('@2dam1617')
             ->content($this->message->message) // Markdown supported.
             ->button('View message', $url); // Inline Button
     }
