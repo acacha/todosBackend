@@ -40,6 +40,10 @@ return [
         'rest_api_key' => env('ONESIGNAL_REST_API_KEY')
     ],
 
+    'telegram-bot-api' => [
+        'token' => env('TELEGRAM_BOT_TOKEN', 'YOUR BOT TOKEN HERE')
+    ],
+
     /*
     | Acacha Llum services...
     |

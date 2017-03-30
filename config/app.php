@@ -171,6 +171,7 @@ return [
         NotificationChannels\Gcm\GcmServiceProvider::class,
         NotificationChannels\OneSignal\OneSignalServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
+        NotificationChannels\Telegram\TelegramServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -240,6 +241,7 @@ return [
         'URL'          => Illuminate\Support\Facades\URL::class,
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
+
 
         /*
          * Acacha Llum Aliases...

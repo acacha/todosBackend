@@ -12,6 +12,8 @@ use NotificationChannels\Gcm\GcmChannel;
 use NotificationChannels\Gcm\GcmMessage;
 use NotificationChannels\OneSignal\OneSignalChannel;
 use NotificationChannels\OneSignal\OneSignalMessage;
+use NotificationChannels\Telegram\TelegramChannel;
+use NotificationChannels\Telegram\TelegramMessage;
 
 /**
  * Class MessageSent
@@ -45,7 +47,7 @@ class MessageSent extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return [GcmChannel::class , 'email'];
+        return [GcmChannel::class , TelegramChannel::class ];
     }
 
     /**
@@ -96,5 +98,20 @@ class MessageSent extends Notification implements ShouldQueue
         return OneSignalMessage::create()
             ->subject($this->user)
             ->body($this->message);
+    }
+
+    /**
+     * To telegram.
+     *
+     * @param $notifiable
+     * @return mixed
+     */
+    public function toTelegram($notifiable)
+    {
+        $url = url('/messages/' . $this->message->id);
+
+        return TelegramMessage::create()
+            ->content($this->message->message) // Markdown supported.
+            ->button('View message', $url); // Inline Button
     }
 }

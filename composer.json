@@ -17,7 +17,8 @@
         "laravel-notification-channels/gcm": "^0.0.1",
         "laravel/tinker": "^1.0",
         "laravel-notification-channels/onesignal": "^1.0",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "laravel-notification-channels/telegram": "^0.0.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
